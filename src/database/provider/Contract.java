@@ -24,6 +24,7 @@ public interface Contract {
         String ADDRESS_ID = "adress_id";
         String ALL = "*";
         String[] COLUMNS = new String[]{ID, NAME, ADDRESS_ID};
+        String[] JOINED_COLUMNS = new String[]{ID,NAME,ADDRESS_ID,Addresses.ID,Addresses.ADDRESS,Addresses.TIME};
         String JOIN_COLUMNS = TABLE_NAME+"."+ID+", "+TABLE_NAME+"."+NAME+", "+TABLE_NAME+"."+ADDRESS_ID+", "+ Addresses.JOIN_COLUMN;
         String TABLE_INNER_JOIN = "INNER JOIN " + Addresses.TABLE_NAME + " ON " + Addresses.TABLE_NAME + "." + Addresses.ID + "=" + TABLE_NAME + "." + ADDRESS_ID;
 

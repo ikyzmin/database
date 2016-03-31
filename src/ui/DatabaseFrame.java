@@ -53,6 +53,7 @@ public class DatabaseFrame extends JFrame implements TreeSelectionListener {
 
     private void init() {
         FlowLayout flowLayout = new FlowLayout();
+        setResizable(false);
         flowLayout.setAlignment(FlowLayout.LEADING);
         flowLayout.setHgap(0);
         flowLayout.setVgap(0);
@@ -90,7 +91,7 @@ public class DatabaseFrame extends JFrame implements TreeSelectionListener {
         add(treePanel,BorderLayout.LINE_START);
         gridPanel.add(databaseGrid.getTableHeader());
         gridPanel.add(databaseGrid);
-        gridPanel.setPreferredSize(new Dimension(getPreferredSize().width, 500));
+        gridPanel.setPreferredSize(new Dimension(350, 500));
 
         add(gridPanel,BorderLayout.LINE_END);
         setVisible(true);

@@ -65,7 +65,7 @@ public class DatabaseParser {
         }
 
         for (int i=0;i<joinedValues.size();i++){
-            joinedColumns.get(i%(Contract.Addresses.COLUMNS.length+Contract.Customers.COLUMNS.length)).addValue(joinedValues.get(i));
+            joinedColumns.get(i%Contract.Customers.JOINED_COLUMNS.length).addValue(joinedValues.get(i));
         }
 
         ArrayList<Table> tables = new ArrayList<>();
