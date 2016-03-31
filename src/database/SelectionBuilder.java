@@ -1,5 +1,7 @@
 package database;
 
+import database.provider.Contract;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +17,7 @@ public class SelectionBuilder {
     private StringBuilder order = new StringBuilder();
     private StringBuilder columns = new StringBuilder();
     private ResultSet resultSet;
+    private boolean withJoin;
 
 
     public SelectionBuilder table(String name) {
@@ -32,6 +35,11 @@ public class SelectionBuilder {
         return this;
     }
 
+    public SelectionBuilder withJoin(){
+        this.withJoin = true;
+        return this;
+    }
+
 
     public ResultSet query(String... columns) {
         StringBuilder queryColumns = new StringBuilder();
@@ -39,6 +47,9 @@ public class SelectionBuilder {
             queryColumns.append(columns[i]).append(i == (columns.length - 1) ? " " : ", ");
         }
         query.append(queryColumns).append(" FROM ").append(table).append(where).append(order);
+        if (withJoin){
+            query.append(Contract.Customers.TABLE_INNER_JOIN);
+        }
         connection = DatabaseConnection.getInstance().getConnection();
         try {
             statement = connection.createStatement();

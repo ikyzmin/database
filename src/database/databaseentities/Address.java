@@ -1,8 +1,7 @@
 package database.databaseentities;
 
-import database.contracts.Contract;
+import database.provider.Contract;
 import database.entities.Value;
-import javafx.animation.KeyValue;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

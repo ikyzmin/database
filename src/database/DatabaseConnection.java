@@ -1,11 +1,9 @@
 package database;
 
 import account.Account;
-import database.contracts.Contract;
-import ui.DatabaseFrame;
+import database.provider.Contract;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
