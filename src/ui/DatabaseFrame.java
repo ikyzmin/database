@@ -61,6 +61,7 @@ public class DatabaseFrame extends JFrame implements TreeSelectionListener {
         popUpMenu = new PopUpMenuBuilder().addItem("Delete", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 int row = databaseGrid.getSelectedRow();
                 Table table = databaseGrid.getTable();
                 deleteTableRow(row, table);
@@ -121,7 +122,7 @@ public class DatabaseFrame extends JFrame implements TreeSelectionListener {
     public void deleteTableRow(int row, Table table) {
         for (int i = 0; i < table.getColumns().size(); i++) {
             try {
-                new SelectionBuilder().userQuery(String.format("DELETE FROM %1s WHERE %2s=%3s", table.toString(), table.getColumns().get(row), table.getColumns().get(row).getValues().get(0).toString()));
+                new SelectionBuilder().userQuery(String.format("DELETE FROM %1s WHERE %2s=%3s", table.toString(), table.getColumns().get(0), Character.isDigit(table.getColumns().get(0).getValues().get(row).toString().charAt(0))?table.getColumns().get(0).getValues().get(row).toString():("\'"+table.getColumns().get(0).getValues().get(row).toString())+"\'"));
             } catch (SQLException e) {
                 e.printStackTrace();
             }

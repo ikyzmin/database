@@ -36,15 +36,15 @@ public class DatabaseParser {
         for (int i = 1; i <= addressesMetaData.getColumnCount(); i++) {
             addressesColumns.add(new Column(addressesMetaData.getColumnName(i)));
         }
-        for (int i = 1; i < customerMetaData.getColumnCount(); i++) {
+        for (int i = 1; i <= customerMetaData.getColumnCount(); i++) {
             costumersColumns.add(new Column(customerMetaData.getColumnName(i)));
         }
-        for (int i = 1; i < joinedMetaData.getColumnCount(); i++) {
+        for (int i = 1; i <= joinedMetaData.getColumnCount(); i++) {
             joinedColumns.add(new Column(joinedMetaData.getColumnName(i)));
         }
 
 
-        ResultSet foreignKeys = connection.getConnection().getMetaData().getImportedKeys(connection.getConnection().getCatalog(), null, Contract.Customers.TABLE_NAME);
+       /* ResultSet foreignKeys = connection.getConnection().getMetaData().getImportedKeys(connection.getConnection().getCatalog(), null, Contract.Customers.TABLE_NAME);
         while (foreignKeys.next()) {
             costumersColumns.add(new Column(foreignKeys.getString("FKCOLUMN_NAME")));
         }
@@ -52,7 +52,7 @@ public class DatabaseParser {
 
         while (joinedForeignKeys.next()){
             joinedColumns.add(new Column(joinedForeignKeys.getString("FKCOLUMN_NAME")));
-        }
+        }*/
         ArrayList<Value> addressValues = Address.fromCursor(addressesSet);
         ArrayList<Value> customerValues = Customer.fromCursor(customersSet);
         ArrayList<Value> joinedValues = JoinedTables.fromCursor(joinedSet);
